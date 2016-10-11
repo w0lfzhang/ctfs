@@ -6,3 +6,7 @@ pwn200
 
 简单得栈溢出，用checksec查一下，nx关了。而且strcpy函数正好可以任意地址写。我们把free@got覆盖位shellcode地址即可。
 
+pwn300
+
+
+
