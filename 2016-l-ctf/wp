@@ -8,5 +8,4 @@ pwn200
 
 pwn300
 
-
-
+这题需要自己溢出得到libgetshell，然后分析一下，有个可以直接得到shell的getshell函数，用dynelf泄露得到libgetshell的加载地址，然后根据dump下来的libgetshell得到getshell函数的偏移，相加即可得到getshell函数的地址，然后溢出一次就可以得到shell了。
