@@ -78,17 +78,3 @@ p.send('sh')
 
 p.interactive()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-p
