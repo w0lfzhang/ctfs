@@ -1,0 +1,7 @@
+break *0x4008FD
+awatch *0x602020
+
+
+
+
+
